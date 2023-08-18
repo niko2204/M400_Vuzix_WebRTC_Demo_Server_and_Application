@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vuzix XR Demo</title>
+
+    <!-- Vendor CSS BUNDLE
+        Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
+        TIP: Using bundles will improve performance by reducing the number of network requests the client needs to make when loading the page. -->
+    <!-- <link href="css/vendor/all.css" rel="stylesheet"> -->
+    <!-- Vendor CSS Standalone Libraries
+          NOTE: Some of these may have been customized (for example, Bootstrap).
+          See: src/less/themes/{theme_name}/vendor/ directory -->
+    <link href="css/vendor/bootstrap.css" rel="stylesheet">
+    <link href="css/vendor/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="css/vendor/picto.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/material-design-iconic-font.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/datepicker3.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/jquery.minicolors.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/railscasts.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/owl.carousel.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/slick.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/daterangepicker-bs3.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/jquery.bootstrap-touchspin.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/select2.css" rel="stylesheet"> -->
+    <!-- <link href="css/vendor/jquery.countdown.css" rel="stylesheet"> -->
+    <!-- APP CSS BUNDLE [css/app/app.css]
+    INCLUDES:
+        - The APP CSS CORE styling required by the "html" module, also available with main.css - see below;
+        - The APP CSS STANDALONE modules required by the "html" module;
+    NOTE:
+        - This bundle may NOT include ALL of the available APP CSS STANDALONE modules;
+          It was optimised to load only what is actually used by the "html" module;
+          Other APP CSS STANDALONE modules may be available in addition to what's included with this bundle.
+          See src/less/themes/html/app.less
+    TIP:
+        - Using bundles will improve performance by greatly reducing the number of network requests the client needs to make when loading the page. -->
+    <link href="css/app/app.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="css/cust-video-style.css" rel="stylesheet">
+    <link href="css/vendor/jquery.gritter.css" rel="stylesheet">
+
+    <!-- App CSS CORE
+    This variant is to be used when loading the separate styling modules -->
+    <!-- <link href="css/app/main.css" rel="stylesheet"> -->
+    <!-- App CSS Standalone Modules
+      As a convenience, we provide the entire UI framework broke down in separate modules
+      Some of the standalone modules may have not been used with the current theme/module
+      but ALL modules are 100% compatible -->
+    <!-- <link href="css/app/essentials.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/material.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/layout.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/sidebar.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/sidebar-skins.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/navbar.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/messages.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/media.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/charts.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/maps.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/colors-alerts.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/colors-background.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/colors-buttons.css" rel="stylesheet" /> -->
+    <!-- <link href="css/app/colors-text.css" rel="stylesheet" /> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
+    <!-- Wrapper required for sidebar transitions -->
+    <div class="st-container">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-size-large navbar-default navbar-fixed-top " role="navigation" style="background: white" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand navbar-brand-secondary navbar-nav-padding-left" style="background: white">
+                        <img style="vertical-align:middle;margin: 5px auto;display:block" src="images/vuzix_logo.png" alt="Vuzix">
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse " id="main-nav" >
+                    <ul class="nav navbar-nav">
+                        <li style="margin:0 8px auto;text-align: center;">
+                            <h1 class="text-display-1" style="color: #2e2e2e">&nbsp;&nbsp;&nbsp;&nbsp;목포대 XR</h1>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </div>
+        <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+        <div class="sidebar left sidebar-size-3 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark "
+            id="sidebar-menu" data-type="collapse">
+            <div data-scrollable>
+                <div class="sidebar-block">
+                    <ul>
+                        <li>
+                            <div style="width:50%; margin:auto;">
+                                <h3 style="color:white">Configure
+                                    </h5>
+                            </div>
+                        </li>
+                        <li style="background: white;">
+                            <br>
+                            <div id="m300qr" style="width:50%; margin:auto;">
+
+                            </div>
+                            <br>
+                        </li>
+                        <li>
+                            <br>
+                        </li>
+                        <li>
+                            <p>
+                                <input id="devid" type="text" style="width:60%;" />
+                                <button id="devname" style="color:black">Change</button>
+                            </p>
+
+                        </li>
+                        <li>
+                            <h3 style="color:white">HUD 센서 정보</h3>
+                        </li>
+                        <li>
+                            <p>
+                                <span style="color:white">Battery: </span>
+                                <span style="color:white" id="batteryLevel">-- %</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <span style="color:white">온도: </span>
+                                <span style="color:white" id="temperature">-- C</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <span style="color:white">Light Level: </span>
+                                <span style="color:white" id="lightLevel">-- lx</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <span style="color:white">Steps: </span>
+                                <span style="color:white" id="stepNumber">--</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar effects OUTSIDE of st-pusher: -->
+        <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
+        <!-- content push wrapper -->
+        <div class="st-pusher" id="content">
+            <!-- sidebar effects INSIDE of st-pusher: -->
+            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+            <!-- this is the wrapper for the content -->
+            <div class="st-content">
+                <input id="target-uid" hidden="hidden" type="text" value="" />
+                <input id="uid" hidden="hidden" type="text" value="" />
+                <!-- extra div for emulating position:fixed of the menu -->
+                <div class="st-content-inner padding-none">
+                    <div class="container-fluid">
+                        <br />
+                        <div class="row">
+                            <div class="item col-xs-12 col-lg-5">
+                                <div class="row">
+                                    <!-- Huds -->
+                                    <div class="item col-xs-12 col-lg-12">
+                                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="panel-heading">
+                                                <h4 class="text-headline margin-none"><span class="fa fa-tablet"></span>&nbsp
+                                                    HUDs
+                                                </h4>
+                                                <p class="text-subhead text-light">Currently connected HUDs</p>
+                                            </div>
+                                            <ul class="list-group" id="hud_device_list"></ul>
+                                            <div class="panel-footer text-right">
+                                                <p id="ftConnectedDevices" class="text-subhead ">Total Connected Devices:
+                                                    0
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Messages -->
+                                    <div class="item col-xs-12 col-lg-12">
+                                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="panel-heading">
+                                                <h4 class="text-headline margin-none"><span class="fa fa-comments"></span>&nbsp
+                                                    HUD에 문자 보내기
+                                                </h4>
+                                                <br />
+                                                <div class="input-group ">
+                                                    <input id="dataSent" type="text" class="form-control" placeholder="Your message...">
+                                                    <div class="input-group-btn">
+                                                        <button id="data-send" class="btn btn-default">Send</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- IMU Data -->
+                                    <div class="item col-xs-12 col-lg-12">
+                                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="panel-heading">
+                                                <button id="imu-enable" class="btn btn-default pull-right " ><i class="fa fa-toggle-off" aria-hidden="true"></i></button>
+                                                <h4 class="text-headline margin-none"><span class="fa fa-comments"></span>&nbsp
+                                                    IMU Data
+                                                </h4>
+                                            </div>
+                                            <div class="panel-body">                                                      
+                                                <div id="imu-container">        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Local Video -->
+                            <!-- Remote Video -->
+                            <div class="item col-xs-12 col-lg-7">
+                                <!-- Badge Row -->
+                                <div class="row">
+                                    <div class="item col-xs-12 col-lg-12">                                        
+                                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="container-fluid">
+                                                <div class="section-toolbar">
+                                                    <div class="cell" style="padding:0px">
+                                                    <div class="media width-120 v-middle margin-none">
+                                                        <div class="media-left">
+                                                        <div class="icon-block bg-grey-200 s30"><i class="fa fa-battery-half"></i></div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                        <p class="text-body-2 text-light margin-none">Battery</p>
+                                                        <p class="text-title text-primary margin-none" id="batteryLevelGUI">-- %</p>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                    <div class="media width-120 v-middle margin-none">
+                                                        <div class="media-left">
+                                                        <div class="icon-block bg-grey-200 s30"><i class="fa fa-thermometer-3"></i></div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                        <p class="text-body-2 text-light margin-none">Temperature</p>
+                                                        <p class="text-title text-success margin-none" id="tempGUI">-- c</p>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="cell" style="padding-right:0px">
+                                                        <div class="media width-120 v-middle margin-none">
+                                                            <div class="media-left">
+                                                            <div class="icon-block bg-grey-200 s30"><i class="fa fa-lightbulb-o"></i></div>
+                                                            </div>
+                                                            <div class="media-body">
+                                                            <p class="text-body-2 text-light margin-none">Light Level</p>
+                                                            <p class="text-title text-success margin-none" id="lightGUI">-- lx</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell" style="padding-right:0px">
+                                                        <div class="media width-120 v-middle margin-none">
+                                                            <div class="media-left">
+                                                            <div class="icon-block bg-grey-200 s30"><i class="fa fa-paw"></i></div>
+                                                            </div>
+                                                            <div class="media-body">
+                                                            <p class="text-body-2 text-light margin-none">Steps</p>
+                                                            <p class="text-title text-success margin-none" id="stepGUI">--</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="item col-xs-12 col-lg-12">
+                                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="panel-heading">
+                                                <div id="drawControls" class="pull-right">
+                                                    <button id="request-remote-video" title='Request Remote Video' class="btn btn-flat"><i
+                                                            class="fa fa-video-camera" aria-hidden="true"></i></button>
+                                                    &nbsp;&nbsp;
+                                                    <button id="target-video-publish" title='Share Local Video' class="btn btn-flat"><i
+                                                            class="fa fa-video-camera" aria-hidden="true"></i></button>
+                                                    <button id="target-screen" title='Share Desktop' class="btn btn-flat"><i
+                                                            class="fa fa-desktop" aria-hidden="true"></i></button>
+                                                    <button id="target-snapshot" title='Take Snapshot' class="btn btn-flat"><i
+                                                            class="fa fa-camera" aria-hidden="true"></i></button>
+                                                    &nbsp;&nbsp;
+                                                    <button id="btnPencil" title='Line' class="btn btn-inverse"><i class="fa fa-pencil"
+                                                            aria-hidden="true"></i></button>
+                                                    <button id="btnCircle" title='Circle' class="btn btn-flat"><i class="fa fa-circle-thin"
+                                                            aria-hidden="true"></i></button>
+                                                    <button id="btnSquare" title='Square' class="btn btn-flat"><i class="fa fa-square-o"
+                                                            aria-hidden="true"></i></button>
+                                                    <button id="btnClear" title='Erase' class="btn btn-flat"><i class="fa fa-eraser"
+                                                            aria-hidden="true"></i></button>
+                                                </div>
+                                                <h4 class="text-headline margin-none"><span class="fa fa-video-camera"></span>&nbsp Video</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id='media-player'>
+
+                                                    <div id="pip-container" style="position: absolute; z-index: 10; color: blue; width: 64px; height: 64px;" hidden="hidden">
+                                                        <div id="local">
+                                                            <video width="128px" height="128px" id="localVideo" muted="muted" autoplay="autoplay"></video>
+                                                            <canvas width="128px" height="128px" id="ieLocalVideo" style="muted:muted; autoplay:autoplay"></canvas>
+                                                        </div>
+                                                    </div>
+                                                    <div id="remote" class="wrapper">
+                                                        <video width="320px" height="180px" id="remoteVideo" autoplay="autoplay" poster="images/image-placeholder-alt.jpg"></video>
+                                                        <canvas width="320px" height="180px" id="ieRemoteVideo" hidden="true" style="autoplay:autoplay"></canvas>
+                                                        <canvas id="faceFindDisplayCanvas" class="sxoverlaycanvas"></canvas>
+                                                    </div>
+                                                    <div id='media-controls'>
+                                                        <button id='play-pause-button' class='vid-control-button' title='pause' onclick='togglePlayPause();'><i
+                                                                class='fa fa-pause' aria-hidden='true'></i></button>
+                                                        <button id='volume-inc-button' class='vid-control-button' title='increase volume' onclick='changeVolume("+");'><i
+                                                                class='fa fa-plus' aria-hidden='true'></i></button>
+                                                        <button id='volume-dec-button' class='vid-control-button' title='decrease volume' onclick='changeVolume("-");'><i
+                                                                class='fa fa-minus' aria-hidden='true'></i></button>
+                                                        <button id='mute-button' class='vid-control-button' title='mute' onclick='toggleMute("true");'><i
+                                                                class='fa fa-volume-up' aria-hidden='true'></i></button>
+                                                        <button id='fs-button' class='vid-control-button' title='fullscreen' onclick='toggleFullScreen();'><i
+                                                                class='fa fa-arrows-alt' aria-hidden='true'></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /st-content-inner -->
+
+            </div>
+            <!-- /st-content -->
+        </div>
+        <!-- /st-pusher -->
+        <!-- Footer -->
+        <footer class="footer">
+            <strong>Vuzix</strong> v1.0.0 &copy; Copyright 2019
+        </footer>
+        <!-- // Footer -->
+    </div>
+    <!-- /st-container -->
+
+    <script>
+        var colors = {
+            "danger-color": "#e74c3c",
+            "success-color": "#81b53e",
+            "warning-color": "#f0ad4e",
+            "inverse-color": "#2c3e50",
+            "info-color": "#2d7cb5",
+            "default-color": "#6e7882",
+            "default-light-color": "#cfd9db",
+            "purple-color": "#9D8AC7",
+            "mustard-color": "#d4d171",
+            "lightred-color": "#e15258",
+            "body-bg": "#fcfcfc"
+        };
+
+        var config = {
+            theme: "html",
+            skins: {
+                "default": {
+                    "primary-color": "#c0c0c0"
+                }
+            }
+        };
+        
+        function getChromeVersion () {     
+            var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+
+            return raw ? parseInt(raw[2], 10) : false;
+        }
+                
+        var majorChromeVersion = getChromeVersion();
+        console.log("CHROME Version: " + majorChromeVersion);
+        if(majorChromeVersion>68){        
+            console.log("Disabling planB for newer chrome browsers using the unified plan");
+            RTCPeerConnection.prototype.addTransceiver = undefined;
+        }
+
+    </script>
+
+    <!-- Vendor Scripts Bundle
+          Includes all of the 3rd party JavaScript libraries above.
+          The bundle was generated using modern frontend development tools that are provided with the package
+          To learn more about the development process, please refer to the documentation.
+          Do not use it simultaneously with the separate bundles above. -->
+    <!-- <script src="js/vendor/all.js"></script> -->
+    <!-- Vendor Scripts Standalone Libraries -->
+    <script src="js/vendor/moment.js"></script>
+    <script src="js/vendor/core/all.js"></script>
+    <script src="js/vendor/core/jquery.js"></script>
+    <script src="js/vendor/core/bootstrap.js"></script>
+    <script src="js/vendor/core/breakpoints.js"></script>
+    <script src="js/vendor/core/jquery.nicescroll.js"></script>
+    <!--<script src="js/vendor/core/isotope.pkgd.js"></script>-->
+    <!--<script src="js/vendor/core/packery-mode.pkgd.js"></script>-->
+    <!-- <script src="js/vendor/core/jquery.grid-a-licious.js"></script> -->
+    <script src="js/vendor/core/jquery.cookie.js"></script>
+    <script src="js/vendor/core/jquery-ui.custom.js"></script>
+    <!-- <script src="js/vendor/core/jquery.hotkeys.js"></script> -->
+    <script src="js/vendor/core/handlebars.js"></script>
+    <!-- <script src="js/vendor/core/jquery.hotkeys.js"></script> -->
+    <!-- <script src="js/vendor/core/load_image.js"></script> -->
+    <script src="js/vendor/core/jquery.debouncedresize.js"></script>
+    <script src="js/vendor/core/modernizr.js"></script>
+    <!-- <script src="js/vendor/core/velocity.js"></script> -->
+    <!-- <script src="js/vendor/tables/all.js"></script> -->
+    <!-- <script src="js/vendor/forms/all.js"></script> -->
+    <!-- <script src="js/vendor/media/slick.js"></script> -->
+    <!-- <script src="js/vendor/charts/flot/all.js"></script> -->
+    <!-- <script src="js/vendor/nestable/jquery.nestable.js"></script> -->
+    <script src="js/vendor/countdown/all.js"></script>
+    <!-- <script src="js/vendor/angular/all.js"></script> -->
+    <!-- App Scripts Bundle
+          Includes Custom Application JavaScript used for the current theme/module;
+          Do not use it simultaneously with the standalone modules below. -->
+    <!-- <script src="js/app/app.js"></script> -->
+    <!-- App Scripts Standalone Modules
+          As a convenience, we provide the entire UI framework broke down in separate modules
+          Some of the standalone modules may have not been used with the current theme/module
+          but ALL the modules are 100% compatible -->
+    <!-- <script src="js/app/essentials.js"></script>-->
+    <script src="js/app/material.js"></script>
+    <script src="js/app/layout.js"></script>
+    <script src="js/app/sidebar.js"></script>
+    <script src="js/app/media.js"></script>
+    <script src="js/app/messages.js"></script>
+    <!-- <script src="js/app/maps.js"></script> -->
+    <!-- <script src="js/app/charts.js"></script> -->
+    <!-- App Scripts CORE [html]:
+              Includes the custom JavaScript for this theme/module;
+              The file has to be loaded in addition to the UI modules above;
+              app.js already includes main.js so this should be loaded
+              ONLY when using the standalone modules; -->
+    <script src="js/app/main.js"></script>
+
+    <script src="js/vendor/jquery.gritter.min.js"></script>
+    <script src="js/jquery-qrcode.min.js"></script>
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/socket.io.js" type="text/javascript"></script>
+    <script src="js/adapter-7.0.0.js" type="text/javascript"></script>
+    <script src="js/sc.websocket.js" type="text/javascript"></script>
+    <script src="js/owt.js" type="text/javascript"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/drawing.js"></script>
+    <script src="js/cust-vid-player.js"></script>
+    <script src="js/three.min.js"></script>
+   <!-- <script src="js/lib/face.js"></script>
+        <script src="js/lib/ccv.js"></script>
+        <script src="js/facedetect.js"></script> 
+    -->
+
+    <script>
+
+        //var faceApiJs = require("face-api.js");
+
+        var isVideo = 1;
+        var isViewingRemote = false;
+        var serverAddress = 'http://127.0.0.1:8095'; // configured for local host signaling server's address.
+
+        /* need to configure stun and turn server here not used in the demo application */
+        const signaling = new SignalingChannel();
+        let publicationForCamera;
+        
+        var WIDTH  = 100;
+        var HEIGHT = 100;
+
+        var container, scene, camera, renderer;
+        var cube;
+        var matrixCanvas;
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        var p2p = new Owt.P2P.P2PClient({
+            audioEncodings: true,
+            videoEncodings: [{ codec: { name: 'vp8' } }],
+            rtcConfiguration: {
+                iceServers: [{
+                    urls: "stun:example.com:3478"
+                }, {
+                    urls: ["turn:example.com:3478?transport=udp",
+                        "turn:example.com:3478?transport=tcp"
+                    ],
+                    credential: "password",
+                    username: "username"
+                }]
+            },
+        }, signaling);
+
+        var localStream;
+        var localScreen;
+        var iConnectedHuds = 0;
+
+        var getTargetId = function () {
+            return $('#target-uid').val();
+        };
+
+
+        function drawHandler(cmd, c, x1, y1, x2, y2, w, h){
+            console.log('Draw '+ cmd );
+            var jsonData = {};
+            var jsonDrawData = {};
+            var jString;
+
+            var a = x2 - x1,
+                b = y2 - y1,
+                radius;
+
+            jsonDrawData["p"] = cmd;
+            jsonDrawData["c"] = c;
+            jsonDrawData["w"] = w;
+            jsonDrawData["h"] = h;
+            switch(cmd){
+                case 'line':
+                    jsonDrawData["x1"] = x1;
+                    jsonDrawData["y1"] = y1;
+                    jsonDrawData["x2"] = x2;
+                    jsonDrawData["y2"] = y2;
+                    break;
+                case 'circle':
+                    radius = Math.sqrt(a * a + b * b);
+                    jsonDrawData["x1"] = x1;
+                    jsonDrawData["y1"] = y1;
+                    jsonDrawData["r1"] = radius;
+                    break;
+                case 'face':
+                    radius = Math.sqrt(a * a + b * b);
+                    jsonDrawData["x1"] = x1;
+                    jsonDrawData["y1"] = y1;
+                    jsonDrawData["r1"] = radius;
+                    break;
+                case 'square':
+                    jsonDrawData["x1"] = x1;
+                    jsonDrawData["y1"] = y1;
+                    jsonDrawData["x2"] = x2;
+                    jsonDrawData["y2"] = y2;
+                    break;
+
+            }
+
+            jsonData["handler"] = "draw";
+            jsonData["dispname"] = $('#uid').val();
+            jsonData["type"] = cmd;
+            jsonData["datatype"] = "json";
+            jsonData["data"] = JSON.stringify(jsonDrawData);
+            jsonData["date"] = new Date(new Date().getTime()).toJSON();
+
+            jString = JSON.stringify(jsonData);
+            console.log("draw json: " + jString);
+            //appComms.sendMessage(jString);
+            signaling.sendVuzix($('#target-uid').val(), jString);  // Send data to peer.
+        }
+
+
+        function videoPlayHandler(e) {
+            // What you want to do after the event
+            if(drawingApp == undefined){
+                console.log("<!!!!!!!!!!!!!!!!!!!!!!!! UNDEFINED !!!!!!!!!!!!!!!!!!!!!!!!!!>");
+            }
+
+            drawingApp.setDrawEnable(true);
+        }
+
+        function videoStopHandler(e) {
+            // What you want to do after the event
+            drawingApp.setDrawEnable(false);
+        }
+
+        function fnGetFriendlyName(id){
+            var li = document.getElementById(id);
+            if(li != undefined){
+                // get friendly name and return it
+                var friendlyName = li.getElementsByTagName('p')[0].innerHTML;
+                return friendlyName;
+            }
+
+            return id;
+        }
+
+        function fnShowConnected(uid) {
+            $("#hud_device_list li").removeClass("connect_highlight");
+            $('#target-uid').val(uid);
+            var li = document.getElementById(uid);
+            if (li != undefined) {
+                li.classList.add("connect_highlight");
+            }
+            
+            // fnGrowlInfo('Device Connected', 'Connected to ' + uid);
+        }
+
+        function fnClearConnected(uid) {
+            $("#hud_device_list li").removeClass("connect_highlight");
+            $('#target-uid').val('');
+            
+            // fnGrowlInfo('Device Disconnected', ' ' + uid + ' disconnected');
+        }
+
+        function fnSendMessageData(message){
+            var jsonData = {};
+            var jString;
+
+            jsonData["handler"] = "message";
+            jsonData["type"] = "message";
+            jsonData["datatype"] = "text";
+            jsonData["dispname"] = $('#uid').val();
+            jsonData["data"] = message;
+            jsonData["date"] = new Date(new Date().getTime()).toJSON();
+
+            jString = JSON.stringify(jsonData);
+            console.log("send Message json: " + jString);
+
+            signaling.sendVuzix($('#target-uid').val(), jString);  // Send data to peer.
+            
+            fnGrowlChatInfo("Message Sent", "Successfully");
+        }
+
+        function fnChatHandler(dataReceived) {
+            console.log('fnChatHandler');
+            var dt = new Date().toLocaleTimeString().replace("/.*(\d{2}:\d{2}:\d{2}).*/", "$1");
+            var sMessageItem = '<div class="item"><div class="image">' +
+                '<i class="fa fa-user fa-3x" aria-hidden="true"></i></div><div class="text"><div class="heading">' +
+                '<a href="#">' + dataReceived.dispname + '</a><span class="date">' + dt + '</span></div>' +
+                dataReceived.data + '</div></div>';
+            
+            fnGrowlChatInfo("Text Message From: " + dataReceived.dispname, dataReceived.data );
+
+        }
+
+        function fnChatSendHandler(dataToSend){
+            console.log('fnChatSendHandler');
+            var from = $('#uid').val();
+            var dt = new Date().toLocaleTimeString().replace("/.*(\d{2}:\d{2}:\d{2}).*/", "$1");
+            var sMessageItem = '<div class="item in"><div class="image">' +
+                '<i class="fa fa-user fa-3x" aria-hidden="true"></i></div><div class="text"><div class="heading">' +
+                '<a href="#">' + from + '</a><span class="date">' + dt + '</span></div>' +
+                dataToSend + '</div></div>';
+        }
+        
+        function fnSendImuRequest(bDataOn) {
+            var jsonData = {};
+            var jString;
+
+            jsonData["handler"] = "request";
+            if (bDataOn) {
+                jsonData["type"] = "imu_on";
+            } else {
+                jsonData["type"] = "imu_off";
+            }
+            jsonData["datatype"] = "text";
+            jsonData["dispname"] = 'XRApp';
+            jsonData["date"] = new Date(new Date().getTime()).toJSON();
+
+            jString = JSON.stringify(jsonData);
+            console.log("REQUEST: " + jString);
+
+            signaling.sendVuzix($('#target-uid').val(), jString);  // Send data to peer.
+        }
+
+        function fnSendInviteRequest(bInvite) {
+            var jsonData = {};
+            var jString;
+
+            jsonData["handler"] = "request";
+            if (bInvite) {
+                jsonData["type"] = "invite";
+            } else {
+                jsonData["type"] = "uninvite";
+            }
+            jsonData["datatype"] = "text";
+            jsonData["dispname"] = "XRApp";
+            jsonData["date"] = new Date(new Date().getTime()).toJSON();
+
+            jString = JSON.stringify(jsonData);
+            console.log("REQUEST: " + jString);
+
+            signaling.sendVuzix($('#target-uid').val(), jString);
+            // p2p.send($('#target-uid').val(), jString);  // Send data to peer.
+            
+        }
+
+        function fnSendViewRequest(bplay) {
+            var jsonData = {};
+            var jString;
+
+            jsonData["handler"] = "request";
+            if (bplay) {
+                jsonData["type"] = "play";
+            } else {
+                jsonData["type"] = "stop";
+            }
+            jsonData["datatype"] = "text";
+            jsonData["dispname"] = 'XRApp';
+            jsonData["date"] = new Date(new Date().getTime()).toJSON();
+
+            jString = JSON.stringify(jsonData);
+            console.log("REQUEST: " + jString);
+
+            signaling.sendVuzix($('#target-uid').val(), jString);  // Send data to peer.
+        }
+        
+        function fnButtonInvite(id) {
+            if(id == $('#target-uid').val()){
+                fnSendInviteRequest(false);
+            }else{
+                console.log('Invite ID: ' + id);
+                p2p.allowedRemoteIds=[id];                
+                $('#target-uid').val(id);
+                console.log('Target ID: ' + getTargetId());
+                fnSendInviteRequest(true);
+            }
+        }
+
+        function fnGrowlInfo(title, message){
+            jQuery.gritter.add({
+                title: title,
+                text: message,
+                class_name: 'growl-info',
+                image: '/images/camera.png',
+                sticky: false,
+                time: ''
+            });
+
+            return false;
+
+        }
+
+        function fnGrowlChatInfo(title, message){
+            jQuery.gritter.add({
+                title: title,
+                text: message,
+                class_name: 'growl-info',
+                image: '/images/chat.png',
+                sticky: false,
+                time: ''
+            });
+
+            return false;
+
+        }
+
+        function fnGrowlWarning(title, message){
+            jQuery.gritter.add({
+                title: title,
+                text: message,
+                class_name: 'growl-warning',
+                image: '/images/camera.png',
+                sticky: false,
+                time: ''
+            });
+
+            return false;
+
+        }
+
+        function fnGrowlError(title, message){            
+                    
+            jQuery.gritter.add({
+                title: title,
+                text: message,
+                class_name: 'growl-danger',
+                image: 'images/screen.png',
+                sticky: false,
+                time: ''
+            });
+
+            return false;
+        }
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
+            camera.position.set(0, 3.5, 5);
+            camera.lookAt(scene.position);
+        }
+        
+        function initScene() {
+            console.log('====> init scene <====');
+            container = document.getElementById('imu-container');
+            matrixCanvas = document.createElement('canvas');
+		    matrixCanvas.setAttribute('id', 'dataOverlay');
+            
+            matrixCanvas.style.width='100%';
+            matrixCanvas.style.height='75%';
+            matrixCanvas.style.position='absolute';
+            matrixCanvas.style.left=0;
+            matrixCanvas.style.top='25%';
+            
+            let ctx = matrixCanvas.getContext("2d");
+            ctx.font = "8pt Times Roman";
+            ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,50);
+            ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,70);
+            ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,90);
+            ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,110);
+
+            scene = new THREE.Scene();
+            initCamera();
+            initRenderer();				
+            initCube();
+            container.appendChild( renderer.domElement );
+            
+            container.appendChild(matrixCanvas);
+
+        }
+
+        function initRenderer() {
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(WIDTH, HEIGHT);
+        }
+
+        function initCube() {
+            cube = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
+            scene.add(cube);
+        }
+        
+        function render() {
+            console.log('====> Render scene <====');
+            renderer.render(scene, camera);
+        }
+
+        function updateCube(matrix){
+            var m = new THREE.Matrix4();
+
+            for(let x=0;x<matrix.length;x++){
+                matrix[x] = matrix[x].toFixed(4);
+            }
+
+            m.set(matrix[0],matrix[1],matrix[2],matrix[3],
+                matrix[4],matrix[5],matrix[6],matrix[7],
+                matrix[8],matrix[9],matrix[10],matrix[11],
+                matrix[12],matrix[13],matrix[14],matrix[15]);
+                
+            // cube.rotation.x -= .01 * 2;
+            //cube.matrix.multiply(m);            
+            //cube.rotation.setFromRotationMatrix(cube.matrix);
+            cube.rotation.setFromRotationMatrix(m);
+            renderer.render(scene, camera);
+
+            let ctx = matrixCanvas.getContext("2d");
+            ctx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            ctx.font = "8pt Times Roman";
+
+            let fmtString = "" + matrix[0] + " " + matrix[1] + " " + matrix[2]+ " " + matrix[3];
+            ctx.fillText(fmtString,120,50);
+            fmtString = "" + matrix[4] + " " + matrix[5] + " " + matrix[6]+ " " + matrix[7];
+            ctx.fillText(fmtString,120,70);
+            fmtString = "" + matrix[8] + " " + matrix[9] + " " + matrix[10]+ " " + matrix[11];
+            ctx.fillText(fmtString,120,90);
+            fmtString = "" + matrix[12] + " " + matrix[13] + " " + matrix[14]+ " " + matrix[15];
+            ctx.fillText(fmtString,120,110);
+
+        }
+    </script>
+    
+    <script src="js/custom.js"></script>
+    
+    <script type="text/javascript">
+
+        p2p.addEventListener('streamadded', function (e) { // A remote stream is available.
+            console.log("==========> StreamAdded listener <==========");
+            e.stream.addEventListener('ended', () => {
+                console.log('==========> Stream is removed <==========');
+                
+                $("#remote video").show();        
+                $("#remote video").get(0).src='';
+
+                // stop drawing app
+                drawingApp.setDrawEnable(false);
+                drawingApp.stop();
+
+                // stop facedetect
+                // FaceDetect.stop();
+
+                resetPlayer();
+                
+                $('#request-remote-video').removeClass('btn-inverse');
+                $('#request-remote-video').addClass('btn-flat');
+
+                isViewingRemote = false;
+            });
+            console.log('stream-added');
+            var div = document.createElement("div");
+            var video = document.createElement("video");
+            video.setAttribute("width", "320px");
+            video.setAttribute("height", "240px");
+            video.setAttribute("autoplay", "autoplay");
+            //video.id = e.stream.id();
+
+            var canvas = document.createElement("canvas");
+            canvas.setAttribute("width", "320px");
+            canvas.setAttribute("height", "240px");
+            canvas.setAttribute("autoplay", "autoplay::autoplay");
+
+            //var testCan = document.getElementById("tempCanvas");
+
+            if (e.stream.source.video === 'screen-cast') {
+                $('#screen video').show();
+                $('#screen video').get(0).srcObject = e.stream.mediaStream;
+                $('#screen video').get(0).play();
+            } else if (e.stream.source.audio || e.stream.source.video) {
+                $('#remote video').show();
+                $('#remote video').get(0).srcObject = e.stream.mediaStream;
+                $('#remote video').get(0).play();
+            }
+
+            // init drawing application
+            drawingApp.init();
+            drawingApp.setDrawHandler(drawHandler);
+
+            // start face find
+            let dcanvas = document.getElementById('faceFindDisplayCanvas');
+            if(dcanvas == null){
+                console.log("!!!!!!!!!!!!! NO DRAWING CANVAS !!!!!!!!!!!!!!!");
+            }else{                
+               // FaceDetect.init(dcanvas);
+               // FaceDetect.start();
+            }
+
+
+
+            // add video handlers
+            $('#remote video').bind('playing', videoPlayHandler);
+            $('#remote video').bind('pause', videoStopHandler);
+            
+            $('#request-remote-video').removeClass('btn-flat');
+            $('#request-remote-video').addClass('btn-inverse');
+
+            isViewingRemote = true;
+            isVideo++;
+        });
+
+    
+        signaling.onVuzixMessage = function(from, msg){
+            console.log('VuzixMessage FROM: ' + from + ' DATA: ' + msg);
+            try{
+                var obj = JSON.parse(msg);
+                if (obj.handler == 'message') {
+                    fnChatHandler(obj);
+                } else if (obj.handler == 'draw') {
+                    fnDrawHandler(obj);
+                }else if(obj.handler == 'imu'){
+                    // console.log(e.data);                    
+                    let rotVector = JSON.parse(obj.data);
+                    updateCube(rotVector);
+                }else if(obj.handler == 'light'){
+                    //console.log(e.data);  
+                    let lightVector = JSON.parse(obj.data);
+                    if(lightVector[0]>0){
+                        document.getElementById('lightLevel').innerHTML='' + lightVector[0] + ' lx';
+                        document.getElementById('lightGUI').innerHTML='' + lightVector[0] +  ' lx';
+                    }
+                }else if(obj.handler == 'battery'){            
+                    let batVector = JSON.parse(obj.data);
+                    if(batVector[1]>0){
+                        console.log("Battery Data: " +  batVector[1] + " %");  
+                        document.getElementById('batteryLevel').innerHTML='' + batVector[1] + ' %';
+                        document.getElementById('batteryLevelGUI').innerHTML='' + batVector[1] + ' %';
+                    }                    
+                }else if(obj.handler == 'steps'){
+                    //console.log(e.data);
+                    let stepsVector = JSON.parse(obj.data);     
+                    if(stepsVector[0]>0){
+                        document.getElementById('stepNumber').innerHTML='' + stepsVector[0];
+                        document.getElementById('stepGUI').innerHTML='' + stepsVector[0];    
+                    }                
+                }else if(obj.handler == 'response'){
+                    console.log("response: " + obj.action);
+                    if(obj.action == 'invite-accepted') {
+                        console.log('invite accepted by device');            $('#target-screen').prop('disabled', false);
+                        $('#data-send').prop('disabled', false);
+                        $('#target-video-publish').prop('disabled', false);
+                        $('#target-snapshot').prop('disabled', false);
+                        $('#request-remote-video').prop('disabled', false);
+
+                        $('#data-send').prop('disabled', false);
+                        $('#imu-enable').prop('disabled', false);
+
+                        document.getElementById('lightGUI').innerHTML="-- lx";
+                        document.getElementById('stepGUI').innerHTML="--";
+                        document.getElementById('tempGUI').innerHTML="21 C";
+                        document.getElementById('lightLevel').innerHTML="-- lx";
+                        document.getElementById('stepNumber').innerHTML="--";
+                        document.getElementById('temperature').innerHTML='21 C';
+
+                        fnShowConnected(from);
+                    }else if(obj.action == 'disconnected') {        
+                        p2p.stop(from);                               
+                        p2p.allowedRemoteIds=[];   
+                        
+                        $('#data-send').prop('disabled', true);
+                        $('#target-video-publish').prop('disabled', true);
+                        $('#target-screen').prop('disabled', true);
+                        $('#target-snapshot').prop('disabled', true);
+                        $('#request-remote-video').prop('disabled', true);
+                        
+                        $('#data-send').prop('disabled', true);
+                        $('#imu-enable').prop('disabled', true);
+
+                        let ctx = matrixCanvas.getContext("2d");
+                        ctx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                        ctx.font = "8pt Times Roman";
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,50);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,70);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,90);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,110);
+
+                        $("#remote video").show();        
+                        $("#remote video").get(0).src='';
+                        if (localStream) {
+                            localStream.close();
+                            localStream = undefined;
+                        }
+                        if (localScreen) {
+                            localScreen.close();
+                            localScreen = undefined;
+                        }
+
+
+                        $("#remote canvas").hide();
+                        $("#remote video").show();
+                        $("#remote video").get(0).src='';
+
+                        // stop drawing app
+                        drawingApp.setDrawEnable(false);
+                        drawingApp.stop();
+
+                        // stop facedetect
+                        // FaceDetect.stop();
+
+                        resetPlayer();
+                        fnClearConnected(from);
+
+
+                        document.getElementById('remoteVideo').remove();
+                        document.getElementById('ieRemoteVideo').remove();
+
+                        document.getElementById('lightGUI').innerHTML="-- lx";
+                        document.getElementById('stepGUI').innerHTML="--";
+                        document.getElementById('tempGUI').innerHTML="-- C";
+                        document.getElementById('batteryLevelGUI').innerHTML='-- %'
+                        document.getElementById('lightLevel').innerHTML="-- lx";
+                        document.getElementById('stepNumber').innerHTML="--";
+                        document.getElementById('temperature').innerHTML='-- C';
+                        document.getElementById('batteryLevel').innerHTML='-- %';
+
+                        var tv = document.createElement('video');
+                        tv.setAttribute('id', 'remoteVideo');
+                        tv.setAttribute('width', '320px');
+                        tv.setAttribute('height', '240px');
+                        tv.setAttribute('autoplay', 'autoplay');
+                        tv.setAttribute('poster', '/images/image-placeholder-alt.jpg');
+
+                        var cv = document.createElement('canvas');
+                        cv.setAttribute('id', 'ieRemoteVideo');
+                        cv.setAttribute('width', '320px');
+                        cv.setAttribute('height', '240px');
+                        cv.setAttribute('hidden', 'true');
+                        cv.setAttribute('style', 'autoplay:autoplay');
+
+                        document.getElementById('remote').appendChild(tv);
+                        document.getElementById('remote').appendChild(cv);
+                        isViewingRemote = false;
+                    }           
+                }
+            } catch (e) {
+                console.log("Data Received Error: " + e);
+            }
+        };
+
+        p2p.addEventListener('messagereceived', function (e) { // Received data from datachannel.
+            console.log('messagereceived FROM: ' + e.origin + ' DATA: ' + e.message);
+            // $('#dataReceived').val(e.origin + ': ' + e.message);
+            try{
+                var obj = JSON.parse(e.message);
+                if (obj.handler == 'message') {
+                    fnChatHandler(obj);
+                } else if (obj.handler == 'draw') {
+                    fnDrawHandler(obj);
+                }else if(obj.handler == 'imu'){
+                    // console.log(e.data);                    
+                    let rotVector = JSON.parse(obj.data);
+                    updateCube(rotVector);
+                }else if(obj.handler == 'light'){
+                    //console.log(e.data);  
+                    let lightVector = JSON.parse(obj.data);
+                    if(lightVector[0]>0){
+                        document.getElementById('lightLevel').innerHTML='' + lightVector[0] + ' lx';
+                        document.getElementById('lightGUI').innerHTML='' + lightVector[0] +  ' lx';
+                    }
+                }else if(obj.handler == 'battery'){            
+                    let batVector = JSON.parse(obj.data);
+                    if(batVector[1]>0){
+                        console.log("Battery Data: " +  batVector[1] + " %");  
+                        document.getElementById('batteryLevel').innerHTML='' + batVector[1] + ' %';
+                        document.getElementById('batteryLevelGUI').innerHTML='' + batVector[1] + ' %';
+                    }                    
+                }else if(obj.handler == 'steps'){
+                    //console.log(e.data);
+                    let stepsVector = JSON.parse(obj.data);     
+                    if(stepsVector[0]>0){
+                        document.getElementById('stepNumber').innerHTML='' + stepsVector[0];
+                        document.getElementById('stepGUI').innerHTML='' + stepsVector[0];    
+                    }                
+                }else if(obj.handler == 'response'){
+                    console.log("response: " + obj.action);
+                    if(obj.action == 'invite-accepted') {
+                        console.log('invite accepted by device');            $('#target-screen').prop('disabled', false);
+                        $('#data-send').prop('disabled', false);
+                        $('#target-video-publish').prop('disabled', false);
+                        $('#target-snapshot').prop('disabled', false);
+                        $('#request-remote-video').prop('disabled', false);
+
+                        $('#data-send').prop('disabled', false);
+                        $('#imu-enable').prop('disabled', false);
+
+                        document.getElementById('lightGUI').innerHTML="-- lx";
+                        document.getElementById('stepGUI').innerHTML="--";
+                        document.getElementById('tempGUI').innerHTML="21 C";
+                        document.getElementById('lightLevel').innerHTML="-- lx";
+                        document.getElementById('stepNumber').innerHTML="--";
+                        document.getElementById('temperature').innerHTML='21 C';
+
+                        fnShowConnected(e.origin);
+                    }else if(obj.action == 'disconnected') {        
+                        p2p.stop(e.origin);                               
+                        p2p.allowedRemoteIds=[];   
+                        
+                        $('#data-send').prop('disabled', true);
+                        $('#target-video-publish').prop('disabled', true);
+                        $('#target-screen').prop('disabled', true);
+                        $('#target-snapshot').prop('disabled', true);
+                        $('#request-remote-video').prop('disabled', true);
+                        
+                        $('#data-send').prop('disabled', true);
+                        $('#imu-enable').prop('disabled', true);
+
+                        let ctx = matrixCanvas.getContext("2d");
+                        ctx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                        ctx.font = "8pt Times Roman";
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,50);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,70);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,90);
+                        ctx.fillText("0.0000, 0.0000, 0.0000, 0.0000",120,110);
+
+                        $("#remote video").show();        
+                        $("#remote video").get(0).src='';
+                        if (localStream) {
+                            localStream.close();
+                            localStream = undefined;
+                        }
+                        if (localScreen) {
+                            localScreen.close();
+                            localScreen = undefined;
+                        }
+
+
+                        $("#remote canvas").hide();
+                        $("#remote video").show();
+                        $("#remote video").get(0).src='';
+
+                        // stop drawing app
+                        drawingApp.setDrawEnable(false);
+                        drawingApp.stop();
+
+                        // stop facedetect
+                        // FaceDetect.stop();
+
+                        resetPlayer();
+                        fnClearConnected(e.peerId);
+
+
+                        document.getElementById('remoteVideo').remove();
+                        document.getElementById('ieRemoteVideo').remove();
+
+                        document.getElementById('lightGUI').innerHTML="-- lx";
+                        document.getElementById('stepGUI').innerHTML="--";
+                        document.getElementById('tempGUI').innerHTML="-- C";
+                        document.getElementById('batteryLevelGUI').innerHTML='-- %'
+                        document.getElementById('lightLevel').innerHTML="-- lx";
+                        document.getElementById('stepNumber').innerHTML="--";
+                        document.getElementById('temperature').innerHTML='-- C';
+                        document.getElementById('batteryLevel').innerHTML='-- %';
+
+                        var tv = document.createElement('video');
+                        tv.setAttribute('id', 'remoteVideo');
+                        tv.setAttribute('width', '320px');
+                        tv.setAttribute('height', '240px');
+                        tv.setAttribute('autoplay', 'autoplay');
+                        tv.setAttribute('poster', '/images/image-placeholder-alt.jpg');
+
+                        var cv = document.createElement('canvas');
+                        cv.setAttribute('id', 'ieRemoteVideo');
+                        cv.setAttribute('width', '320px');
+                        cv.setAttribute('height', '240px');
+                        cv.setAttribute('hidden', 'true');
+                        cv.setAttribute('style', 'autoplay:autoplay');
+
+                        document.getElementById('remote').appendChild(tv);
+                        document.getElementById('remote').appendChild(cv);
+                        isViewingRemote = false;
+                    }           
+                }
+            } catch (e) {
+                console.log("Data Received Error: " + e);
+            }
+
+        });
+        
+        window.onbeforeunload = function () {
+            if (localStream) {
+                p2p.unpublish(localStream, $('#target-uid').val());
+                localStream.close();
+            }
+            p2p.disconnect();
+            p2p.stop($('#target-uid').val());
+            $('#target-uid').val("");
+        }
+
+    </script>
+
+    <div>
+        <canvas id="testCanvas"></canvas>
+    </div>
+</body>
+
+</html>

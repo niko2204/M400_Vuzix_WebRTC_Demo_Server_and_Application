@@ -1,0 +1,17 @@
+{
+  "name": "Vuzix_Demo",
+  "version": "1.0.0",
+  "description": "p2p developer server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Edgespace",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "ip": "^1.1.5",
+    "opn": "^5.1.0",
+    "socket.io": "^2.3.0"
+  }
+}

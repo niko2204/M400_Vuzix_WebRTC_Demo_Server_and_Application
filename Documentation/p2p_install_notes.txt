@@ -1,0 +1,43 @@
+// Vuzix Demo WebRTC Install
+
+install Nodejs on server or workstation
+cd to server directory of source code
+npm install
+npm start
+
+
+Known issues: sometimes IP detection pulls the wrong IP address to use when vmware or virtual box is installed.
+work around: Modify code in app.js to use proper address or disable virtual network adapters
+
+// Android client application
+Install Android studio 3.0 or above
+Open existing android project
+select M300\ClientApp directory in release
+Build and deploy application to M300
+
+Precompiled APK is provided in the bin directory which can be installed with ADB command line tools
+ADB Install Vuzix-m300-clientapp-v1_0.apk
+
+
+M300 application navigation up, down, select long press up to bring up tab menu long press select to exit application
+
+Use case 
+
+Log into p2p signaling server with web portal (click login button)
+Log into p2p signaling server with M300 using the connect button ( scan barcode when scanner starts )
+Invite M300 to connect via web portal (click invite button)
+Accept invitation on M300
+parties can now share video/audio/text between each other using p2p connection
+
+
+M300 UI
+Main screen Video to share video and audio with other devices
+Settings screen to setup device for different servers and to login and log out of p2p server. Also can connect to other devices
+
+NOTE: entering a name of another device (a different M300 already connected to the p2p server) and connect device to device
+
+Chat screen to send text data between connected devices
+
+
+Known Issues: All devices must have unique names
+Work around: use unique names

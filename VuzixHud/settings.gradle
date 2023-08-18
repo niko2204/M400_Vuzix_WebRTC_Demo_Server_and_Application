@@ -1,0 +1,4 @@
+include ':src:sample:vuzix-xrclient'
+include ':src:sdk:base'
+include ':src:sdk:p2p'
+include ':src:sample:utils'

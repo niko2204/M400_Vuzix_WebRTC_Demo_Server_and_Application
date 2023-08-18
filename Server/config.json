@@ -1,0 +1,18 @@
+{
+  "p2p": {
+    "plain": 8095,
+    "secured": 8096
+  },
+  "web": {
+    "plain": 8080,
+    "secured": 8433
+  },
+  "log": {
+    "enabled": true,
+    "level": 1
+  },
+  "ip_address": {
+    "automatic": true,
+    "address": "192.168.1.2"
+  }
+}
