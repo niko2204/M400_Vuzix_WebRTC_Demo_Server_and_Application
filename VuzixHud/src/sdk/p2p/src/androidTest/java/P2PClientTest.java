@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import owt.base.ContextInitialization;
-import owt.p2p.P2PClient;
-import owt.p2p.P2PClientConfiguration;
+import edu.base.ContextInitialization;
+import edu.p2p.P2PClient;
+import edu.p2p.P2PClientConfiguration;
 
 @RunWith(AndroidJUnit4.class)
 public class P2PClientTest {

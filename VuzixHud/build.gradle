@@ -6,16 +6,16 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath 'com.android.tools.build:gradle:8.1.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
     ext {
-        applicationId = "owt.sample.p2p"
+        applicationId = "edu.mnu.p2p"
         compileSdkVersion = 28
         buildToolsVersion = "28.0.3"
-        minSdkVersion = 22
+        minSdkVersion = 28
         targetSdkVersion = 28
         versionCode = 2
         versionName = "4.3"

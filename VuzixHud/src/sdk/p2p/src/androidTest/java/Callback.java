@@ -3,8 +3,8 @@ import static junit.framework.Assert.assertTrue;
 
 import android.util.Log;
 
-import owt.base.ActionCallback;
-import owt.base.OwtError;
+import edu.base.ActionCallback;
+import edu.base.OwtError;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
