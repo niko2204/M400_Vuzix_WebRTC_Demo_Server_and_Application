@@ -1,12 +1,12 @@
-import static edu.p2p.OwtP2PError.P2P_MESSAGING_TARGET_UNREACHABLE;
+import static owt.p2p.OwtP2PError.P2P_MESSAGING_TARGET_UNREACHABLE;
 
 import static junit.framework.Assert.fail;
 
 import android.util.Log;
 
-import edu.base.ActionCallback;
-import edu.base.OwtError;
-import edu.p2p.SignalingChannelInterface;
+import owt.base.ActionCallback;
+import owt.base.OwtError;
+import owt.p2p.SignalingChannelInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
