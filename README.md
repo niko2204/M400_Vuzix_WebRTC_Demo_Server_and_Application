@@ -1,4 +1,4 @@
-# WebRTC_Server_and_Application for M400 (smart glass) - 목포대학교 재난안전사업단
+# WebRTC 서버와 뷰직스 M400을 위한 앱 (smart glass) - 목포대학교 재난안전사업단
 
 ## 로컬 P2P 서버 설치 및 실행 방법
 
@@ -70,8 +70,14 @@ Secured endpoints, all code exists for implementation.  Requires a signed certif
 Note: HTTPS required to access camera when not hosted locally
 
 ## Original Projects:
-All project are deriviate work from Open WebRTC Toolkit
+* All project are deriviate work from Open WebRTC Toolkit
 https://github.com/open-webrtc-toolkit
 
-Server: https://github.com/open-webrtc-toolkit/owt-server-p2p
+* Server: https://github.com/open-webrtc-toolkit/owt-server-p2p
 App: https://github.com/open-webrtc-toolkit/owt-client-android
+
+* M300_Vuzix_WebRTC_Demo_Server_and_Application
+https://github.com/Vuzix/M300_Vuzix_WebRTC_Demo_Server_and_Application
+
+* 시작시 부팅 방법, step을 이용한 intent
+https://github.com/niko2204/walkNcamera
