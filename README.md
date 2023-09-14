@@ -1,6 +1,6 @@
 # WebRTC_Server_and_Application for M400 (smart glass) - 목포대학교 재난안전사업단
 
-## Local P2P and Web Server Install and Run
+## 로컬 P2P 서버 설치 및 실행 방법
 
 Nodejs 를 서버나 워크스테이션에 설치하세요. 
 server 디렉터로로 이동하여 아래 명령어를 실행하시면 서버가 실행됩니다.
