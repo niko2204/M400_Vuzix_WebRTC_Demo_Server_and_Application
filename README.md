@@ -52,7 +52,7 @@ Application navigation: The "menu" gesture will bring up a menu. The "back" gest
 3. M400/M4000의 카메라로 사용하여 웹 포털에 표시된 QR 코드를 스캔하여 p2p 서버에 로그인합니다.
 4. 웹 포털을 통해 연결하려면 M400를 초대하세요(초대 버튼 클릭).
 5. 이제 P2P 연결을 사용하여 서로 비디오/오디오/텍스트를 공유할 수 있습니다.
-
+6. 안드로이드 앱의 overlay권한을 수동으로 허용합니다.
 ## User Interface
 
 Main screen Video is shared video
