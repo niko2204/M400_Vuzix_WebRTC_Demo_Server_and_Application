@@ -6,8 +6,10 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 
 public class BootService extends Service {
@@ -39,7 +41,9 @@ public class BootService extends Service {
     private void createNotificationChannel(){
         NotificationChannel notificationChannel = new NotificationChannel(myChannelId, channelName, NotificationManager.IMPORTANCE_HIGH); // Android 8.0 이상 NotificationChannel 생성 필수
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannel(notificationChannel); // NotificationManager 를 통해서 Notification Channel 생성
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationManager.createNotificationChannel(notificationChannel); // NotificationManager 를 통해서 Notification Channel 생성
+        }
     }
 
     private Notification createNotification(){ // Notification 만들기
@@ -49,14 +53,16 @@ public class BootService extends Service {
                 .build();
     }
 
+
     private void startApp(){ // 앱 실행하기
-        if(Settings.canDrawOverlays(this)){ // 권한이 있을 때
-            Intent intent = new Intent(this, MainActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            this.startActivity(intent);
-        }
+            if(Settings.canDrawOverlays(this)){ // 권한이 있을 때
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                this.startActivity(intent);
+            }
+
     }
 
     @Override
