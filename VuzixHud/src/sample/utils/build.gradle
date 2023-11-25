@@ -27,4 +27,6 @@ dependencies {
     api project(':src:sdk:base')
     implementation 'org.webrtc:google-webrtc:1.0.28513'
     implementation 'io.pristine:libjingle:11139'
+
+
 }
