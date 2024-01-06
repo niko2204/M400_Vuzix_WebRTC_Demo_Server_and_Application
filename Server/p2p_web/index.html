@@ -1272,6 +1272,17 @@
             $('#target-uid').val("");
         }
 
+        function fullscreen() {
+            let videoContainer = document.getElementById('remote');
+            let video = document.getElementById('remoteVideo');
+            if (videoContainer.fullscreenElement) {
+                videoContainer.setSize(320, 240);
+            } else {
+                videoContainer.requestFullscreen();
+            }
+        }
+
+
     </script>
 
     <div>
