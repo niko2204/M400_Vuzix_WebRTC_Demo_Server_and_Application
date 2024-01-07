@@ -1282,6 +1282,12 @@
             }
         }
 
+        function toggleMute() {
+            let video = document.getElementById('remoteVideo');
+            video.muted = !video.muted;
+            console.log('Mute: ' + video.muted);
+        }
+
 
     </script>
 
