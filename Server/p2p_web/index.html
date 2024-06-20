@@ -1011,7 +1011,14 @@
                         console.log("Battery Data: " +  batVector[1] + " %");  
                         document.getElementById('batteryLevel').innerHTML='' + batVector[1] + ' %';
                         document.getElementById('batteryLevelGUI').innerHTML='' + batVector[1] + ' %';
-                    }                    
+                    }       
+                }else if(obj.handler == 'temperature'){
+                    //console.log(e.data);  
+                    let tempVector = JSON.parse(obj.data);
+                    if(tempVector[0]>0){
+                        document.getElementById('temperature').innerHTML='' + tempVector[0] + ' C';
+                        document.getElementById('tempGUI').innerHTML='' + tempVector[0] + ' C';
+                    }             
                 }else if(obj.handler == 'steps'){
                     //console.log(e.data);
                     let stepsVector = JSON.parse(obj.data);     
@@ -1033,10 +1040,10 @@
 
                         document.getElementById('lightGUI').innerHTML="-- lx";
                         document.getElementById('stepGUI').innerHTML="--";
-                        document.getElementById('tempGUI').innerHTML="21 C";
+                        document.getElementById('tempGUI').innerHTML="-- C";
                         document.getElementById('lightLevel').innerHTML="-- lx";
                         document.getElementById('stepNumber').innerHTML="--";
-                        document.getElementById('temperature').innerHTML='21 C';
+                        document.getElementById('temperature').innerHTML='-- C';
 
                         fnShowConnected(from);
                     }else if(obj.action == 'disconnected') {        
@@ -1171,10 +1178,10 @@
 
                         document.getElementById('lightGUI').innerHTML="-- lx";
                         document.getElementById('stepGUI').innerHTML="--";
-                        document.getElementById('tempGUI').innerHTML="21 C";
+                        document.getElementById('tempGUI').innerHTML="-- C";
                         document.getElementById('lightLevel').innerHTML="-- lx";
                         document.getElementById('stepNumber').innerHTML="--";
-                        document.getElementById('temperature').innerHTML='21 C';
+                        document.getElementById('temperature').innerHTML='-- C';
 
                         fnShowConnected(e.origin);
                     }else if(obj.action == 'disconnected') {        
