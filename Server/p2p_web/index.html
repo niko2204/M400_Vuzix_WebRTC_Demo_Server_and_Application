@@ -356,8 +356,6 @@
                                                         <button id='fs-button' class='vid-control-button' title='fullscreen' onclick='toggleFullScreen();'><i
                                                                 class='fa fa-arrows-alt' aria-hidden='true'></i></button>
                                                     </div>
-                                                    <div id="localTranscript" style="height: 100px; overflow-y: scroll; border: 1px solid #ccc; margin-top: 10px;"></div>
-                                                    <div id="remoteTranscript" style="height: 100px; overflow-y: scroll; border: 1px solid #ccc; margin-top: 10px;"></div>
                                                 </div>
                                             </div>
 
@@ -1291,88 +1289,12 @@
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         function toggleMute() {
             let video = document.getElementById('remoteVideo');
             video.muted = !video.muted;
             console.log('Mute: ' + video.muted);
         }
 
-       
-        // 여기서 부터 음성인식 코드
-        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-        const localRecognition = new window.SpeechRecognition();
-        localRecognition.continuous = true;
-        localRecognition.interimResults = true;
-        localRecognition.lang = 'ko-KR';
-
-        const remoteRecognition = new window.SpeechRecognition();
-        remoteRecognition.continuous = true;
-        remoteRecognition.interimResults = true;
-        remoteRecognition.lang = 'ko-KR';
-
-        localRecognition.onresult = (event) => {
-            let transcript = '';
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                transcript += event.results[i][0].transcript;
-            }
-            document.getElementById('localTranscript').innerText += transcript + '\n';
-            document.getElementById('localTranscript').scrollTop = document.getElementById('localTranscript').scrollHeight;
-        };
-
-        remoteRecognition.onresult = (event) => {
-            let transcript = '';
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                transcript += event.results[i][0].transcript;
-            }
-            document.getElementById('remoteTranscript').innerText += transcript + '\n';
-            document.getElementById('remoteTranscript').scrollTop = document.getElementById('remoteTranscript').scrollHeight;
-        };
-
-        localRecognition.start();
-        remoteRecognition.start();
-
-        const localStream = document.getElementById('localVideo').srcObject;
-        const remoteStream = document.getElementById('remoteVideo').srcObject;
-
-        const processAudioStream = (stream, recognition) => {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const source = audioContext.createMediaStreamSource(stream);
-            const processor = audioContext.createScriptProcessor(4096, 1, 1);
-
-            source.connect(processor);
-            processor.connect(audioContext.destination);
-
-            processor.onaudioprocess = (event) => {
-                const inputData = event.inputBuffer.getChannelData(0);
-                if (inputData.some(sample => sample !== 0)) {
-                    recognition.stop();
-                    recognition.start();
-                }
-            };
-        };
-
-        if (localStream) {
-            processAudioStream(localStream, localRecognition);
-        }
-
-        if (remoteStream) {
-            processAudioStream(remoteStream, remoteRecognition);
-        }
-
-        document.getElementById('localVideo').addEventListener('play', () => {
-            processAudioStream(localStream, localRecognition);
-        });
-
-        document.getElementById('remoteVideo').addEventListener('play', () => {
-            processAudioStream(remoteStream, remoteRecognition);
-        });
-=======
->>>>>>> parent of 516fa10 (temperature 보내기)
-=======
->>>>>>> parent of 516fa10 (temperature 보내기)
 
     </script>
 
