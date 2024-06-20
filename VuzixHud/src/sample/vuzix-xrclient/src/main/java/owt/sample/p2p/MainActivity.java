@@ -702,11 +702,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         mLightSensor = null;
                     }
 
-                    if(mTempSensor != null){
-                        mSensorManager.unregisterListener(MainActivity.this, mTempSensor);
-                        mTempSensor = null;
-                    }
-
                     // unregister battery events
                     if(mBroadcastReceiver != null) {
                         try {
@@ -839,7 +834,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                     Log.e(TAG,"Light sensor is null");
                                 }
 
-                                mTempSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+                                // mTempSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
 
                                 // register for battery events
                                 MainActivity.this.registerReceiver(mBroadcastReceiver,iFilter);
