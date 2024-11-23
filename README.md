@@ -75,7 +75,12 @@ Note: HTTPS required to access camera when not hosted locally
   시연 도중 터치패드 입력으로 인해 오작동이 발생많이 발생함.
   터치패드 입력과 버튼 입력이 같은 키 이벤트를 사용하여 둘 다 막을 수 밖에 없음.
   세손가락 터치만 남겨두고 모두 막음. 세손가락 길게 터치시 전원끄기 혹은 재부팅 가능.
-  
+
+* gradle에서 webrtc implementation 수정 
+
+  ```
+  implementation("com.dafruits:webrtc:123.0.0")
+  ```
 ## Original Projects:
 * All project are deriviate work from Open WebRTC Toolkit
 https://github.com/open-webrtc-toolkit

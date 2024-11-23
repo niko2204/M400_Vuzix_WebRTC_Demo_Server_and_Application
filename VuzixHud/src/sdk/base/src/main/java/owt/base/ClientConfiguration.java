@@ -19,7 +19,7 @@ public abstract class ClientConfiguration {
     protected ClientConfiguration(RTCConfiguration rtcConf) {
         if (rtcConf == null) {
             rtcConf = new RTCConfiguration(new LinkedList<>());
-            rtcConf.enableDtlsSrtp = true;
+            rtcConf.enableDscp = true;
             rtcConf.continualGatheringPolicy = GATHER_CONTINUALLY;
         }
         rtcConf.sdpSemantics = UNIFIED_PLAN;
