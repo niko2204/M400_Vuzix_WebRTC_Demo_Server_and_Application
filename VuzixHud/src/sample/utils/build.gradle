@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -20,13 +21,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'owt.sample.utils'
 }
 
 dependencies {
     api project(':src:sdk:base')
     implementation("com.dafruits:webrtc:123.0.0")
     implementation 'io.pristine:libjingle:11139'
-
-
 }

@@ -4,8 +4,8 @@ import static junit.framework.Assert.fail;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import owt.base.ContextInitialization;
@@ -24,7 +24,7 @@ public class P2PClientTest {
                 InstrumentationRegistry.getTargetContext()).initialize();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         defaultConf = P2PClientConfiguration.builder().build();
     }
@@ -39,7 +39,7 @@ public class P2PClientTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testCreationWithNullSignaling() {
         try {
             new P2PClient(defaultConf, null);
@@ -48,7 +48,7 @@ public class P2PClientTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testConnect() {
         P2PClient client = new P2PClient(defaultConf, new MockSignalingChannel());
         String token = "{'token':" + UID1 + "}";

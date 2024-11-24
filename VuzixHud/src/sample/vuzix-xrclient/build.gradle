@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
 
 
     defaultConfig {
@@ -25,7 +27,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'owt.sample.p2p'
 }
 
 dependencies {
@@ -42,5 +43,4 @@ dependencies {
     implementation project(':src:sample:utils')
     implementation project(':src:sdk:p2p')
     implementation 'com.vuzix:sdk-barcode:1.71'
-
 }

@@ -27,7 +27,7 @@
     <string name="owt_p2p">OWT P2P</string>
     <string name="only_on_mseries">This app is intented for the Vuzix M-Series smart glasses</string>
     <string name="changeRemoteView">Changing Main Display View</string>
-    <string name="default_message">국립목포대학교. QR코드 스캔</string>
+    <string name="default_message">WebRTC Demo</string>
     <string name="bad_qr_scanned">Incorrect QR code</string>
     <string name="failed_connect">Failed to connect</string>
 

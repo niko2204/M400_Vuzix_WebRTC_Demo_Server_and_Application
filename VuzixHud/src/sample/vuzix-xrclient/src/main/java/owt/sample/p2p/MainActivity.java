@@ -1,7 +1,7 @@
 package owt.sample.p2p;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.view.KeyEvent.KEYCODE_BACK;
+
 import static owt.base.MediaCodecs.VideoCodec.H264;
 import static owt.base.MediaCodecs.VideoCodec.H265;
 import static owt.base.MediaCodecs.VideoCodec.VP8;
@@ -10,7 +10,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,7 +33,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -43,6 +41,7 @@ import android.widget.Toast;
 
 import com.vuzix.sdk.barcode.ScanResult;
 import com.vuzix.sdk.barcode.ScannerIntent;
+import android.content.ActivityNotFoundException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,6 +52,7 @@ import org.webrtc.SurfaceViewRenderer;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                         switch (keyCode) {
-                            case KEYCODE_BACK:
+                            case KeyEvent.KEYCODE_BACK:
 
                                 Log.d(TAG, "Finish called");
 
@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -1093,27 +1092,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         }
     };
-
-
-    //버튼이나 터치패드를 건드려 꺼지지 않게 하기 위해 모든 버튼과 터치 입력 무시
-    // 3개 손가락으로 터치하면 화면이 꺼지나 버튼을 누르면 다시 켜짐
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-
-//        if (event.getKeyCode() == KeyEvent.KEYCODE_F12) {
-//            return super.dispatchKeyEvent(KEYCODE_BACK);
-//        }
-        return false;
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return false;
-    }
 
 }

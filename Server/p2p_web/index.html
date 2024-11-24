@@ -255,7 +255,7 @@
                                         <div class="panel panel-default paper-shadow" data-z="0.5">
                                             <div class="container-fluid">
                                                 <div class="section-toolbar">
-                                                    <div class="cell" style="padding:0px">
+                                                    <div class="cell" style="padding:0">
                                                     <div class="media width-120 v-middle margin-none">
                                                         <div class="media-left">
                                                         <div class="icon-block bg-grey-200 s30"><i class="fa fa-battery-half"></i></div>
@@ -277,7 +277,7 @@
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    <div class="cell" style="padding-right:0px">
+                                                    <div class="cell" style="padding-right:0">
                                                         <div class="media width-120 v-middle margin-none">
                                                             <div class="media-left">
                                                             <div class="icon-block bg-grey-200 s30"><i class="fa fa-lightbulb-o"></i></div>
@@ -288,7 +288,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="cell" style="padding-right:0px">
+                                                    <div class="cell" style="padding-right:0">
                                                         <div class="media width-120 v-middle margin-none">
                                                             <div class="media-left">
                                                             <div class="icon-block bg-grey-200 s30"><i class="fa fa-paw"></i></div>
@@ -341,8 +341,8 @@
                                                     </div>
                                                     <div id="remote" class="wrapper">
                                                         <video width="320px" height="180px" id="remoteVideo" autoplay="autoplay" poster="images/image-placeholder-alt.jpg"></video>
-                                                        <canvas width="320px" height="180px" id="ieRemoteVideo" hidden="true" style="width: 128px; height: 128px;"></canvas>
-                                                        <canvas id="faceFindDisplayCanvas" class="sxoverlaycanvas"></canvas>
+                                                        <canvas width="320px" height="180px" id="ieRemoteVideo" hidden="hidden" style="width: 128px; height: 128px;"></canvas>
+                                                        <canvas id="faceFindDisplayCanvas" class="overlapping"></canvas>
                                                     </div>
                                                     <div id='media-controls'>
                                                         <button id='play-pause-button' class='vid-control-button' title='pause' onclick='togglePlayPause();'><i
@@ -390,14 +390,14 @@
         <!-- /st-pusher -->
         <!-- Footer -->
         <footer class="footer">
-            <strong>MNU UVR Lab.</strong> v0.0.1 &copy; Copyright 2023
+            <strong>MNU UVR Lab.</strong> v0.3 &copy; Copyright 2024
         </footer>
         <!-- // Footer -->
     </div>
     <!-- /st-container -->
 
     <script>
-        var colors = {
+        const colors = {
             "danger-color": "#e74c3c",
             "success-color": "#81b53e",
             "warning-color": "#f0ad4e",
@@ -411,7 +411,7 @@
             "body-bg": "#fcfcfc"
         };
 
-        var config = {
+        const config = {
             theme: "html",
             skins: {
                 "default": {
@@ -419,7 +419,7 @@
                 }
             }
         };
-        
+
         function getChromeVersion () {     
             var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
 
@@ -624,7 +624,7 @@
         }
 
 
-        function videoPlayHandler(e) {
+        function videoPlayHandler() {
             // What you want to do after the event
             if(drawingApp == undefined){
                 console.log("<!!!!!!!!!!!!!!!!!!!!!!!! UNDEFINED !!!!!!!!!!!!!!!!!!!!!!!!!!>");
@@ -640,7 +640,7 @@
 
         function fnGetFriendlyName(id){
             var li = document.getElementById(id);
-            if(li != undefined){
+            if(li !== undefined){
                 // get friendly name and return it
                 var friendlyName = li.getElementsByTagName('p')[0].innerHTML;
                 return friendlyName;
@@ -771,7 +771,7 @@
         }
         
         function fnButtonInvite(id) {
-            if(id == $('#target-uid').val()){
+            if(id === $('#target-uid').val()){
                 fnSendInviteRequest(false);
             }else{
                 console.log('Invite ID: ' + id);
@@ -1004,52 +1004,52 @@
             console.log('VuzixMessage FROM: ' + from + ' DATA: ' + msg);
             try{
                 var obj = JSON.parse(msg);
-                if (obj.handler == 'message') {
+                if (obj.handler === 'message') {
                     fnChatHandler(obj);
-                } else if (obj.handler == 'draw') {
+                } else if (obj.handler === 'draw') {
                     fnDrawHandler(obj);
-                }else if(obj.handler == 'imu'){
+                }else if(obj.handler === 'imu'){
                     // console.log(e.data);                    
                     let rotVector = JSON.parse(obj.data);
                     updateCube(rotVector);
-                }else if(obj.handler == 'light'){
+                }else if(obj.handler === 'light'){
                     //console.log(e.data);  
                     let lightVector = JSON.parse(obj.data);
                     if(lightVector[0]>0){
                         document.getElementById('lightLevel').innerHTML='' + lightVector[0] + ' lx';
                         document.getElementById('lightGUI').innerHTML='' + lightVector[0] +  ' lx';
                     }
-                }else if(obj.handler == 'battery'){            
+                }else if(obj.handler === 'battery'){
                     let batVector = JSON.parse(obj.data);
                     if(batVector[1]>0){
                         console.log("Battery Data: " +  batVector[1] + " %");  
                         document.getElementById('batteryLevel').innerHTML='' + batVector[1] + ' %';
                         document.getElementById('batteryLevelGUI').innerHTML='' + batVector[1] + ' %';
                     }       
-                }else if(obj.handler == 'temperature'){
+                }else if(obj.handler === 'temperature'){
                     //console.log(e.data);  
                     let tempVector = JSON.parse(obj.data);
                     if(tempVector[0]>0){
                         document.getElementById('temperature').innerHTML='' + tempVector[0] + ' C';
                         document.getElementById('tempGUI').innerHTML='' + tempVector[0] + ' C';
                     }             
-                }else if(obj.handler == 'steps'){
+                }else if(obj.handler === 'steps'){
                     //console.log(e.data);
                     let stepsVector = JSON.parse(obj.data);     
                     if(stepsVector[0]>0){
                         document.getElementById('stepNumber').innerHTML='' + stepsVector[0];
                         document.getElementById('stepGUI').innerHTML='' + stepsVector[0];    
                     }                
-                }else if(obj.handler == 'response'){
+                }else if(obj.handler === 'response'){
                     console.log("response: " + obj.action);
-                    if(obj.action == 'invite-accepted') {
+                    if(obj.action === 'invite-accepted') {
                         console.log('invite accepted by device');            $('#target-screen').prop('disabled', false);
                         $('#data-send').prop('disabled', false);
                         $('#target-video-publish').prop('disabled', false);
                         $('#target-snapshot').prop('disabled', false);
                         $('#request-remote-video').prop('disabled', false);
 
-                        $('#data-send').prop('disabled', false);
+                    //    $('#data-send').prop('disabled', false);
                         $('#imu-enable').prop('disabled', false);
 
                         document.getElementById('lightGUI').innerHTML="-- lx";
@@ -1060,7 +1060,7 @@
                         document.getElementById('temperature').innerHTML='-- C';
 
                         fnShowConnected(from);
-                    }else if(obj.action == 'disconnected') {        
+                    }else if(obj.action === 'disconnected') {
                         p2p.stop(from);                               
                         p2p.allowedRemoteIds=[];   
                         
@@ -1070,7 +1070,7 @@
                         $('#target-snapshot').prop('disabled', true);
                         $('#request-remote-video').prop('disabled', true);
                         
-                        $('#data-send').prop('disabled', true);
+                   //     $('#data-send').prop('disabled', true);
                         $('#imu-enable').prop('disabled', true);
 
                         let ctx = matrixCanvas.getContext("2d");
@@ -1149,6 +1149,49 @@
             // $('#dataReceived').val(e.origin + ': ' + e.message);
             try{
                 var obj = JSON.parse(e.message);
+                //ylee stt 추가
+                if (obj.handler === 'stt') {
+                    // 원격에서 전송된 음성 데이터를 처리
+                    const audioBlob = new Blob([new Uint8Array(obj.data)], { type: 'audio/webm' });
+                    const audioURL = URL.createObjectURL(audioBlob);
+
+                    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                    recognition.lang = 'ko-KR'; // 한국어 설정
+                    recognition.interimResults = false;
+
+                    recognition.onresult = (event) => {
+                        const transcript = Array.from(event.results)
+                            .map((result) => result[0].transcript)
+                            .join('')
+                            .trim();
+                        if (transcript) {
+                         //   addMessage(e.origin, transcript); // 대화에 추가
+                            addMessage('응급구조사',transcript);
+                            console.log('응급구조사:', transcript);
+                        }
+                    };
+
+                    recognition.onerror = (event) => {
+                        console.error('STT Error:', event.error);
+                    };
+
+                    // 음성 데이터를 음성 인식 엔진에 전달
+                    const audioContext = new AudioContext();
+                    fetch(audioURL)
+                        .then(response => response.arrayBuffer())
+                        .then(buffer => audioContext.decodeAudioData(buffer))
+                        .then(decodedData => {
+                            const audioBufferSource = audioContext.createBufferSource();
+                            audioBufferSource.buffer = decodedData;
+                            const mediaStream = audioContext.createMediaStreamDestination();
+                            audioBufferSource.connect(mediaStream);
+                            audioBufferSource.start();
+                            recognition.start(); // STT 시작
+                        })
+                        .catch(err => {
+                            console.error('Audio Processing Error:', err);
+                        });
+                }
                 if (obj.handler == 'message') {
                     fnChatHandler(obj);
                 } else if (obj.handler == 'draw') {
@@ -1282,6 +1325,16 @@
             }
 
         });
+
+        // //ylee
+        // // 대화 내용을 기록하는 함수
+        // function addMessage(speaker, message) {
+        //     const chatContainer = document.getElementById('chatContainer');
+        //     const messageElement = document.createElement('div');
+        //     messageElement.innerHTML = `<strong>${speaker}:</strong> ${message}`;
+        //     chatContainer.appendChild(messageElement);
+        //     chatContainer.scrollTop = chatContainer.scrollHeight; // 스크롤 아래로 이동
+        // }
         
         window.onbeforeunload = function () {
             if (localStream) {
@@ -1336,6 +1389,7 @@
                 .trim();
             if (transcript) {
                 addMessage('의사', transcript);
+                console.log('의사:', transcript);
             }
         };
 
