@@ -122,7 +122,7 @@
                         <li>
                             <div style="width:50%; margin:auto;">
                                 <h3 style="color:white">Configure
-                                    </h5>
+                                    </h3>
                             </div>
                         </li>
                         <li style="background: white;">
@@ -365,6 +365,20 @@
                             </div>
                         </div>
 
+                    </div>
+                    <!-- ylee 대화 표시를 위한 섹션 추가 -->
+                    <div>
+                        <button id="start-stt" class="btn btn-primary">STT 시작</button>
+                        <button id="stop-stt" class="btn btn-danger">STT 중단</button>
+                    </div>
+
+                    <div class="panel panel-default paper-shadow" data-z="0.5">
+                        <div class="panel-heading">
+                            <h4 class="text-headline margin-none"><span class="fa fa-comments"></span>&nbsp 실시간 대화</h4>
+                        </div>
+                        <div id="chatContainer" style="height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+                            <!-- 대화 내용이 여기에 추가됩니다 -->
+                        </div>
                     </div>
 
                 </div>
@@ -1294,6 +1308,66 @@
             video.muted = !video.muted;
             console.log('Mute: ' + video.muted);
         }
+
+        // ylee Web Speech API를 활용한 STT 구현
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'ko-KR';
+        recognition.interimResults = false; // 중간 결과 비활성화
+        recognition.continuous = false; // 연속 인식 활성화
+
+        let isSTTActive = false; // STT 활성 상태 플래그
+
+        // 대화 내용을 기록하는 함수
+        function addMessage(speaker, message) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageElement = document.createElement('div');
+            const emphasizedMessage = message.replace(/혈압|맥박/gi, (match) => `<span class="highlight">${match}</span>`);
+            messageElement.innerHTML = `<strong>${speaker}:</strong> ${emphasizedMessage}`;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // 스크롤 아래로 이동
+        }
+
+        // 의사 STT 처리
+        recognition.onresult = (event) => {
+            const transcript = Array.from(event.results)
+                .map((result) => result[0].transcript)
+                .join('')
+                .trim();
+            if (transcript) {
+                addMessage('의사', transcript);
+            }
+        };
+
+        recognition.onerror = (event) => {
+            console.error('의사 STT Error:', event.error);
+            if (isSTTActive) {
+                recognition.stop();
+                recognition.start(); // 오류 발생 시 재시작
+            }
+        };
+
+        recognition.onend = () => {
+            if (isSTTActive) {
+                recognition.start(); // 의사가 중단하지 않았다면 계속 동작
+            }
+        };
+
+        document.getElementById('start-stt').addEventListener('click', () => {
+            if (!isSTTActive) {
+                isSTTActive = true;
+                recognition.start();
+                console.log('의사 STT 시작');
+            }
+        });
+
+        document.getElementById('stop-stt').addEventListener('click', () => {
+            if (isSTTActive) {
+                isSTTActive = false;
+                recognition.stop();
+                console.log('의사 STT 중단');
+            }
+        });
 
 
     </script>
